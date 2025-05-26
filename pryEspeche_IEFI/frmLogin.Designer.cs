@@ -88,7 +88,8 @@
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.txtUsuario);
             this.Name = "FrmLogin";
-            this.Text = "frmLogin";
+            this.Text = "Login";
+           
             this.ResumeLayout(false);
             this.PerformLayout();
 

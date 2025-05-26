@@ -22,13 +22,13 @@ namespace pryEspeche_IEFI
 
         private void BtnConectar_Click(object sender, EventArgs e)
         {
-            // 📁 Ruta al archivo Access (podés poner la ruta completa si querés)
-            string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;;Data Source=Login.mdb;";
+            
+            string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;;Data Source=iefiBD.mdb;";
 
             string username = txtUsuario.Text;
             string password = txtContraseña.Text;
 
-            // 🟡 Adaptado a nombres de campo reales en Access: Nombre y Contraseña
+            
             string query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre = ? AND Contraseña = ?";
 
             using (OleDbConnection conn = new OleDbConnection(connectionString))
@@ -38,7 +38,7 @@ namespace pryEspeche_IEFI
                     conn.Open();
                     OleDbCommand cmd = new OleDbCommand(query, conn);
 
-                    // ⚠️ En OleDb los parámetros son por orden, no por nombre
+                    
                     cmd.Parameters.AddWithValue("?", username);
                     cmd.Parameters.AddWithValue("?", password);
 
@@ -47,8 +47,9 @@ namespace pryEspeche_IEFI
                     if (count > 0)
                     {
                         MessageBox.Show("Inicio de sesión exitoso.");
-                        // Podés abrir otro formulario acá si querés
+                        frmPrincipal principal = new frmPrincipal(username); // pasa el nombre de usuario
                         this.Hide();
+                        principal.Show();
                     }
                     else
                     {
