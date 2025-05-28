@@ -42,9 +42,13 @@ namespace pryEspeche_IEFI
         {
             DateTime horaFin = DateTime.Now;
             TimeSpan tiempoUso = horaFin - horaInicio;
+
+            // Guardar solo hora:minuto:segundo como texto
+            string horaInicioStr = horaInicio.ToString("HH:mm:ss");
+            string horaFinStr = horaFin.ToString("HH:mm:ss");
             string tiempoStr = tiempoUso.ToString(@"hh\:mm\:ss");
 
-            string insertQuery = "INSERT INTO Auditoria (FechaHoraInicio, Usuario, FechaHoraFin, TiempoUso) VALUES (?, ?, ?, ?)";
+            string insertQuery = "INSERT INTO Auditoria (Usuario, FechaHoraInicio, FechaHoraFin, TiempoUso) VALUES (?, ?, ?, ?)";
 
             using (OleDbConnection conn = new OleDbConnection(connectionString))
             {
@@ -53,10 +57,9 @@ namespace pryEspeche_IEFI
                     conn.Open();
                     using (OleDbCommand cmd = new OleDbCommand(insertQuery, conn))
                     {
-                        // Orden correcto de tipos
-                        cmd.Parameters.Add("FechaHoraInicio", OleDbType.Date).Value = horaInicio;
                         cmd.Parameters.Add("Usuario", OleDbType.VarChar).Value = nombreUsuario;
-                        cmd.Parameters.Add("FechaHoraFin", OleDbType.Date).Value = horaFin;
+                        cmd.Parameters.Add("FechaHoraInicio", OleDbType.VarChar).Value = horaInicioStr;
+                        cmd.Parameters.Add("FechaHoraFin", OleDbType.VarChar).Value = horaFinStr;
                         cmd.Parameters.Add("TiempoUso", OleDbType.VarChar).Value = tiempoStr;
 
                         cmd.ExecuteNonQuery();

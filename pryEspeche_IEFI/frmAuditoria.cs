@@ -21,7 +21,8 @@ namespace pryEspeche_IEFI
         private void frmAuditoria_Load(object sender, EventArgs e)
         {
             string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=iefiBD.mdb;";
-            string query = "SELECT * FROM Auditoria";
+            string query = "SELECT Usuario, FechaHoraInicio, FechaHoraFin, TiempoUso FROM Auditoria ORDER BY FechaHoraInicio";
+
 
             using (OleDbConnection conn = new OleDbConnection(connectionString))
             {
