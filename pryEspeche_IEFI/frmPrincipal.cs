@@ -18,6 +18,12 @@ namespace pryEspeche_IEFI
         private DateTime horaInicio;
         private string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=iefiBD.mdb;";
 
+        //casa "Server = localhost\\SQLEXPRESS;Database=iefiBD;Trusted_Connection=True;";
+
+        //Lab  "Server=localhost;Database=iefiBD;Trusted_Connection=True;";//
+
+
+
         public frmPrincipal(string usuario)
         {
             InitializeComponent();
