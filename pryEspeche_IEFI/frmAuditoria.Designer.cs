@@ -29,10 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvDatos = new System.Windows.Forms.DataGridView();
-            this.FechaHoraInicio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Usuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FechaHoraFin = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TiempoUso = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,36 +37,11 @@
             this.dgvDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvDatos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDatos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.FechaHoraInicio,
-            this.Usuario,
-            this.FechaHoraFin,
-            this.TiempoUso});
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDatos.Location = new System.Drawing.Point(0, 0);
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.Size = new System.Drawing.Size(737, 428);
             this.dgvDatos.TabIndex = 0;
-            // 
-            // FechaHoraInicio
-            // 
-            this.FechaHoraInicio.HeaderText = "FechaHoraInicio";
-            this.FechaHoraInicio.Name = "FechaHoraInicio";
-            // 
-            // Usuario
-            // 
-            this.Usuario.HeaderText = "Usuario";
-            this.Usuario.Name = "Usuario";
-            // 
-            // FechaHoraFin
-            // 
-            this.FechaHoraFin.HeaderText = "FechaHoraFin";
-            this.FechaHoraFin.Name = "FechaHoraFin";
-            // 
-            // TiempoUso
-            // 
-            this.TiempoUso.HeaderText = "TiempoUso";
-            this.TiempoUso.Name = "TiempoUso";
             // 
             // frmAuditoria
             // 
@@ -90,9 +61,5 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvDatos;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FechaHoraInicio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Usuario;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FechaHoraFin;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TiempoUso;
     }
 }

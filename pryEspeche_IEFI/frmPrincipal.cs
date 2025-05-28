@@ -21,6 +21,7 @@ namespace pryEspeche_IEFI
         public frmPrincipal(string usuario)
         {
             InitializeComponent();
+            this.FormClosing += frmPrincipal_FormClosing;
             nombreUsuario = usuario;
             horaInicio = DateTime.Now;
         }
@@ -33,7 +34,8 @@ namespace pryEspeche_IEFI
 
         private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
-            RegistrarAuditoria(); // Al cerrar el formulario se registra
+            MessageBox.Show("Se está cerrando el formulario. Registrando auditoría...");
+            RegistrarAuditoria();
         }
 
         private void RegistrarAuditoria()
@@ -51,6 +53,7 @@ namespace pryEspeche_IEFI
                     conn.Open();
                     using (OleDbCommand cmd = new OleDbCommand(insertQuery, conn))
                     {
+                        // Orden correcto de tipos
                         cmd.Parameters.Add("FechaHoraInicio", OleDbType.Date).Value = horaInicio;
                         cmd.Parameters.Add("Usuario", OleDbType.VarChar).Value = nombreUsuario;
                         cmd.Parameters.Add("FechaHoraFin", OleDbType.Date).Value = horaFin;
@@ -64,6 +67,17 @@ namespace pryEspeche_IEFI
                     MessageBox.Show("Error al registrar auditoría: " + ex.Message);
                 }
             }
+        }
+
+        private void auditoriaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmAuditoria auditoria = new frmAuditoria();
+            auditoria.ShowDialog();
+        }
+
+        private void btnCerrarSesion_Click(object sender, EventArgs e)
+        {
+            this.Close(); // dispara el evento FormClosing y se graba auditoría
         }
     }
 }

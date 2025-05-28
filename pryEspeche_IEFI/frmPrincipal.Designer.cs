@@ -31,11 +31,12 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tareasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tareasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.auditoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.striplabelUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.striplabelFecha = new System.Windows.Forms.ToolStripStatusLabel();
-            this.auditoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tareasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnCerrarSesion = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -66,6 +67,19 @@
             this.administracionToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
             this.administracionToolStripMenuItem.Text = "Administración";
             // 
+            // tareasToolStripMenuItem1
+            // 
+            this.tareasToolStripMenuItem1.Name = "tareasToolStripMenuItem1";
+            this.tareasToolStripMenuItem1.Size = new System.Drawing.Size(123, 22);
+            this.tareasToolStripMenuItem1.Text = "Usuarios";
+            // 
+            // auditoriaToolStripMenuItem
+            // 
+            this.auditoriaToolStripMenuItem.Name = "auditoriaToolStripMenuItem";
+            this.auditoriaToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.auditoriaToolStripMenuItem.Text = "Auditoria";
+            this.auditoriaToolStripMenuItem.Click += new System.EventHandler(this.auditoriaToolStripMenuItem_Click);
+            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -86,28 +100,26 @@
             // striplabelFecha
             // 
             this.striplabelFecha.Name = "striplabelFecha";
-            this.striplabelFecha.Size = new System.Drawing.Size(509, 17);
+            this.striplabelFecha.Size = new System.Drawing.Size(540, 17);
             this.striplabelFecha.Spring = true;
             this.striplabelFecha.Text = "Fecha:";
             // 
-            // auditoriaToolStripMenuItem
+            // btnCerrarSesion
             // 
-            this.auditoriaToolStripMenuItem.Name = "auditoriaToolStripMenuItem";
-            this.auditoriaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.auditoriaToolStripMenuItem.Text = "Auditoria";
-            
-            // 
-            // tareasToolStripMenuItem1
-            // 
-            this.tareasToolStripMenuItem1.Name = "tareasToolStripMenuItem1";
-            this.tareasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.tareasToolStripMenuItem1.Text = "Usuarios";
+            this.btnCerrarSesion.Location = new System.Drawing.Point(472, 344);
+            this.btnCerrarSesion.Name = "btnCerrarSesion";
+            this.btnCerrarSesion.Size = new System.Drawing.Size(101, 37);
+            this.btnCerrarSesion.TabIndex = 2;
+            this.btnCerrarSesion.Text = " Cerrar Sesión";
+            this.btnCerrarSesion.UseVisualStyleBackColor = true;
+            this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(585, 418);
+            this.Controls.Add(this.btnCerrarSesion);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -134,5 +146,6 @@
         private System.Windows.Forms.ToolStripStatusLabel striplabelFecha;
         private System.Windows.Forms.ToolStripMenuItem auditoriaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tareasToolStripMenuItem1;
+        private System.Windows.Forms.Button btnCerrarSesion;
     }
 }

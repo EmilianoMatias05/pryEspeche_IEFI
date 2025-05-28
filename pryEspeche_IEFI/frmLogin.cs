@@ -22,13 +22,11 @@ namespace pryEspeche_IEFI
 
         private void BtnConectar_Click(object sender, EventArgs e)
         {
-            
-            string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;;Data Source=iefiBD.mdb;";
 
+            string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=iefiBD.mdb;";
             string username = txtUsuario.Text;
             string password = txtContraseña.Text;
 
-            
             string query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre = ? AND Contraseña = ?";
 
             using (OleDbConnection conn = new OleDbConnection(connectionString))
@@ -37,8 +35,6 @@ namespace pryEspeche_IEFI
                 {
                     conn.Open();
                     OleDbCommand cmd = new OleDbCommand(query, conn);
-
-                    
                     cmd.Parameters.AddWithValue("?", username);
                     cmd.Parameters.AddWithValue("?", password);
 
@@ -47,9 +43,11 @@ namespace pryEspeche_IEFI
                     if (count > 0)
                     {
                         MessageBox.Show("Inicio de sesión exitoso.");
-                        frmPrincipal principal = new frmPrincipal(username); // pasa el nombre de usuario
-                        this.Hide();
-                        principal.Show();
+
+                        
+                        frmPrincipal principal = new frmPrincipal(username);
+                        principal.ShowDialog(); // Espera a que se cierre principal
+                        this.Close(); // Cierra login después
                     }
                     else
                     {
@@ -67,7 +65,7 @@ namespace pryEspeche_IEFI
                 {
                     MessageBox.Show("Error al conectar con la base de datos: " + ex.Message);
                 }
-            }
+            }   
         }
     }
 }

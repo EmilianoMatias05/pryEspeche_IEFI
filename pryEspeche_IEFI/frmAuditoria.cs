@@ -20,10 +20,8 @@ namespace pryEspeche_IEFI
 
         private void frmAuditoria_Load(object sender, EventArgs e)
         {
-                
             string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=iefiBD.mdb;";
-
-            string query = "SELECT * FROM Auditoria (FechaHoraInicio, Usuario, FechaHoraFin, TiempoUso) VALUES (?, ?, ?, ?)";
+            string query = "SELECT * FROM Auditoria";
 
             using (OleDbConnection conn = new OleDbConnection(connectionString))
             {
@@ -33,7 +31,7 @@ namespace pryEspeche_IEFI
                     OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn);
                     DataTable tabla = new DataTable();
                     adapter.Fill(tabla);
-                    dgvDatos.DataSource = tabla; 
+                    dgvDatos.DataSource = tabla;
                 }
                 catch (Exception ex)
                 {
