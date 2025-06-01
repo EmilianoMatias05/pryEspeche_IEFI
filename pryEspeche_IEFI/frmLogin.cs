@@ -11,61 +11,58 @@ namespace pryEspeche_IEFI
         public FrmLogin()
         {
             InitializeComponent();
+            // También puedes poner aquí el evento, pero es igual en Load
+            // this.Load += FrmLogin_Load;
         }
 
         private int IntentosFallidos;
 
-        private void FrmLogin_Load(object sender, EventArgs e)
+        private void FrmLogin_Load_1(object sender, EventArgs e)
         {
-            txtContraseña.UseSystemPasswordChar = true;
+            BtnConectar.Enabled = false;
+
+            // Asociar evento TextChanged a ambos textbox
+            txtUsuario.TextChanged += ValidarCampos;
+            txtContraseña.TextChanged += ValidarCampos;
+
+            // Mostrar asteriscos en contraseña
+            txtContraseña.PasswordChar = '*';
+        }
+
+        private void ValidarCampos(object sender, EventArgs e)
+        {
+            BtnConectar.Enabled = !string.IsNullOrWhiteSpace(txtUsuario.Text) &&
+                                  !string.IsNullOrWhiteSpace(txtContraseña.Text);
         }
 
         private void BtnConectar_Click(object sender, EventArgs e)
         {
-
-            string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=iefiBD.mdb;";
             string username = txtUsuario.Text;
             string password = txtContraseña.Text;
 
             string query = "SELECT COUNT(*) FROM Usuarios WHERE Nombre = ? AND Contraseña = ?";
 
-            using (OleDbConnection conn = new OleDbConnection(connectionString))
+            DataTable dt = ConexionBD.EjecutarSelect(query, username, password);
+
+            if (dt.Rows.Count > 0 && Convert.ToInt32(dt.Rows[0][0]) > 0)
             {
-                try
+                MessageBox.Show("Inicio de sesión exitoso.");
+
+                frmPrincipal principal = new frmPrincipal(username);
+                principal.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                IntentosFallidos++;
+                MessageBox.Show("Usuario o contraseña incorrectos. Intento " + IntentosFallidos + " de 3.");
+
+                if (IntentosFallidos >= 3)
                 {
-                    conn.Open();
-                    OleDbCommand cmd = new OleDbCommand(query, conn);
-                    cmd.Parameters.AddWithValue("?", username);
-                    cmd.Parameters.AddWithValue("?", password);
-
-                    int count = Convert.ToInt32(cmd.ExecuteScalar());
-
-                    if (count > 0)
-                    {
-                        MessageBox.Show("Inicio de sesión exitoso.");
-
-                        
-                        frmPrincipal principal = new frmPrincipal(username);
-                        principal.ShowDialog(); // Espera a que se cierre principal
-                        this.Close(); // Cierra login después
-                    }
-                    else
-                    {
-                        IntentosFallidos++;
-                        MessageBox.Show("Usuario o contraseña incorrectos. Intento " + IntentosFallidos + " de 3.");
-
-                        if (IntentosFallidos >= 3)
-                        {
-                            MessageBox.Show("Demasiados intentos fallidos. El formulario se cerrará.");
-                            this.Close();
-                        }
-                    }
+                    MessageBox.Show("Demasiados intentos fallidos. El formulario se cerrará.");
+                    this.Close();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al conectar con la base de datos: " + ex.Message);
-                }
-            }   
-        }
+            }
+        }       
     }
 }

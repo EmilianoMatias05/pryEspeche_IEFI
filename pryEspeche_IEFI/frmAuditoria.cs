@@ -20,25 +20,28 @@ namespace pryEspeche_IEFI
 
         private void frmAuditoria_Load(object sender, EventArgs e)
         {
-            string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=iefiBD.mdb;";
-            string query = "SELECT Usuario, FechaHoraInicio, FechaHoraFin, TiempoUso FROM Auditoria ORDER BY FechaHoraInicio";
+            string query = "SELECT Usuario, HoraInicio, HoraFin, TiempoUso, Fecha FROM Auditoria ORDER BY HoraInicio DESC";
 
+            DataTable tabla = ConexionBD.EjecutarSelect(query);
 
-            using (OleDbConnection conn = new OleDbConnection(connectionString))
-            {
-                try
-                {
-                    conn.Open();
-                    OleDbDataAdapter adapter = new OleDbDataAdapter(query, conn);
-                    DataTable tabla = new DataTable();
-                    adapter.Fill(tabla);
-                    dgvDatos.DataSource = tabla;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al cargar auditoría: " + ex.Message);
-                }
-            }
+            dgvDatos.DataSource = tabla;
+
+            // Formato de hora solamente (hh:mm:ss) para las columnas de fecha
+            dgvDatos.Columns["HoraInicio"].DefaultCellStyle.Format = "HH:mm:ss";
+            dgvDatos.Columns["HoraFin"].DefaultCellStyle.Format = "HH:mm:ss";
+            dgvDatos.Columns["Fecha"].DefaultCellStyle.Format = "dd/MM/yyyy";
+        }
+
+        private void dtpFecha_ValueChanged(object sender, EventArgs e)
+        {
+            string sql = "SELECT Usuario, HoraInicio, HoraFin, TiempoUso, Fecha " +
+                 "FROM Auditoria WHERE FORMAT(Fecha, 'MM/dd/yyyy') = ? " +
+                 "ORDER BY HoraInicio";
+
+            DateTime fechaSeleccionada = dtpFecha.Value.Date;
+            string fechaStr = fechaSeleccionada.ToString("MM/dd/yyyy");
+
+            dgvDatos.DataSource = ConexionBD.EjecutarSelect(sql, fechaStr);
         }
     }
 }

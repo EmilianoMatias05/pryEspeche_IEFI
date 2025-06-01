@@ -70,13 +70,13 @@
             // tareasToolStripMenuItem1
             // 
             this.tareasToolStripMenuItem1.Name = "tareasToolStripMenuItem1";
-            this.tareasToolStripMenuItem1.Size = new System.Drawing.Size(123, 22);
+            this.tareasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.tareasToolStripMenuItem1.Text = "Usuarios";
             // 
             // auditoriaToolStripMenuItem
             // 
             this.auditoriaToolStripMenuItem.Name = "auditoriaToolStripMenuItem";
-            this.auditoriaToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.auditoriaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.auditoriaToolStripMenuItem.Text = "Auditoria";
             this.auditoriaToolStripMenuItem.Click += new System.EventHandler(this.auditoriaToolStripMenuItem_Click);
             // 
@@ -94,13 +94,13 @@
             // striplabelUser
             // 
             this.striplabelUser.Name = "striplabelUser";
-            this.striplabelUser.Size = new System.Drawing.Size(30, 17);
-            this.striplabelUser.Text = "User";
+            this.striplabelUser.Size = new System.Drawing.Size(33, 17);
+            this.striplabelUser.Text = "User:";
             // 
             // striplabelFecha
             // 
             this.striplabelFecha.Name = "striplabelFecha";
-            this.striplabelFecha.Size = new System.Drawing.Size(540, 17);
+            this.striplabelFecha.Size = new System.Drawing.Size(537, 17);
             this.striplabelFecha.Spring = true;
             this.striplabelFecha.Text = "Fecha:";
             // 

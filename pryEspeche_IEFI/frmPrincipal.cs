@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Data.SqlTypes;
 
 namespace pryEspeche_IEFI
 {
@@ -17,12 +18,6 @@ namespace pryEspeche_IEFI
         private string nombreUsuario;
         private DateTime horaInicio;
         private string connectionString = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=iefiBD.mdb;";
-
-        //casa "Server = localhost\\SQLEXPRESS;Database=iefiBD;Trusted_Connection=True;";
-
-        //Lab  "Server=localhost;Database=iefiBD;Trusted_Connection=True;";//
-
-
 
         public frmPrincipal(string usuario)
         {
@@ -36,6 +31,12 @@ namespace pryEspeche_IEFI
         {
             striplabelUser.Text = "Usuario: " + nombreUsuario;
             striplabelFecha.Text = "Fecha: " + horaInicio.ToString("dd/MM/yyyy HH:mm");
+
+            // Solo mostrar el menú de Auditoría si el usuario es admin
+            if (nombreUsuario.ToLower() != "admin")
+            {
+                auditoriaToolStripMenuItem.Visible = false;
+            }
         }
 
         private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
@@ -54,7 +55,7 @@ namespace pryEspeche_IEFI
             string horaFinStr = horaFin.ToString("HH:mm:ss");
             string tiempoStr = tiempoUso.ToString(@"hh\:mm\:ss");
 
-            string insertQuery = "INSERT INTO Auditoria (Usuario, FechaHoraInicio, FechaHoraFin, TiempoUso) VALUES (?, ?, ?, ?)";
+            string insertQuery = "INSERT INTO Auditoria (Usuario, HoraInicio, HoraFin, TiempoUso, Fecha) VALUES (?, ?, ?, ?, ?)";
 
             using (OleDbConnection conn = new OleDbConnection(connectionString))
             {
@@ -64,10 +65,10 @@ namespace pryEspeche_IEFI
                     using (OleDbCommand cmd = new OleDbCommand(insertQuery, conn))
                     {
                         cmd.Parameters.Add("Usuario", OleDbType.VarChar).Value = nombreUsuario;
-                        cmd.Parameters.Add("FechaHoraInicio", OleDbType.VarChar).Value = horaInicioStr;
-                        cmd.Parameters.Add("FechaHoraFin", OleDbType.VarChar).Value = horaFinStr;
+                        cmd.Parameters.Add("FechaHoraInicio", OleDbType.Date).Value = horaInicio; // tipo Date
+                        cmd.Parameters.Add("FechaHoraFin", OleDbType.Date).Value = horaFin;
                         cmd.Parameters.Add("TiempoUso", OleDbType.VarChar).Value = tiempoStr;
-
+                        cmd.Parameters.Add("Fecha", OleDbType.Date).Value = horaInicio.Date; // Solo la fecha
                         cmd.ExecuteNonQuery();
                     }
                 }
