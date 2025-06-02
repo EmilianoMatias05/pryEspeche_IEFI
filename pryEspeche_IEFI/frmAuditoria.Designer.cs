@@ -30,6 +30,7 @@
         {
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.btnVerTodos = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -39,9 +40,9 @@
             this.dgvDatos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dgvDatos.Location = new System.Drawing.Point(246, 0);
+            this.dgvDatos.Location = new System.Drawing.Point(236, 0);
             this.dgvDatos.Name = "dgvDatos";
-            this.dgvDatos.Size = new System.Drawing.Size(559, 361);
+            this.dgvDatos.Size = new System.Drawing.Size(569, 361);
             this.dgvDatos.TabIndex = 0;
             // 
             // dtpFecha
@@ -52,11 +53,22 @@
             this.dtpFecha.TabIndex = 1;
             this.dtpFecha.ValueChanged += new System.EventHandler(this.dtpFecha_ValueChanged);
             // 
+            // btnVerTodos
+            // 
+            this.btnVerTodos.Location = new System.Drawing.Point(46, 282);
+            this.btnVerTodos.Name = "btnVerTodos";
+            this.btnVerTodos.Size = new System.Drawing.Size(139, 43);
+            this.btnVerTodos.TabIndex = 2;
+            this.btnVerTodos.Text = "Ver Todos";
+            this.btnVerTodos.UseVisualStyleBackColor = true;
+            this.btnVerTodos.Click += new System.EventHandler(this.btnVerTodos_Click);
+            // 
             // frmAuditoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 361);
+            this.Controls.Add(this.btnVerTodos);
             this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.dgvDatos);
             this.Name = "frmAuditoria";
@@ -72,5 +84,6 @@
 
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.Button btnVerTodos;
     }
 }

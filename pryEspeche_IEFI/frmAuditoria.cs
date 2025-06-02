@@ -43,5 +43,14 @@ namespace pryEspeche_IEFI
 
             dgvDatos.DataSource = ConexionBD.EjecutarSelect(sql, fechaStr);
         }
+
+        private void btnVerTodos_Click(object sender, EventArgs e)
+        {
+            dgvDatos.DataSource = ConexionBD.EjecutarSelect("SELECT Usuario, HoraInicio, HoraFin, TiempoUso, Fecha FROM Auditoria ORDER BY HoraInicio DESC");
+
+            dgvDatos.Columns["HoraInicio"].DefaultCellStyle.Format = "HH:mm:ss";
+            dgvDatos.Columns["HoraFin"].DefaultCellStyle.Format = "HH:mm:ss";
+            dgvDatos.Columns["Fecha"].DefaultCellStyle.Format = "dd/MM/yyyy";
+        }
     }
 }

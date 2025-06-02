@@ -11,8 +11,7 @@ namespace pryEspeche_IEFI
         public FrmLogin()
         {
             InitializeComponent();
-            // También puedes poner aquí el evento, pero es igual en Load
-            // this.Load += FrmLogin_Load;
+            
         }
 
         private int IntentosFallidos;

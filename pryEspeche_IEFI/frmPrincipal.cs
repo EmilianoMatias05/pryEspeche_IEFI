@@ -29,6 +29,7 @@ namespace pryEspeche_IEFI
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            this.ControlBox = false;
             striplabelUser.Text = "Usuario: " + nombreUsuario;
             striplabelFecha.Text = "Fecha: " + horaInicio.ToString("dd/MM/yyyy HH:mm");
 
