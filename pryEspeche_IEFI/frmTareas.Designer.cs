@@ -49,9 +49,9 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(418, 81);
+            this.btnEliminar.Location = new System.Drawing.Point(256, 120);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 41);
+            this.btnEliminar.Size = new System.Drawing.Size(59, 26);
             this.btnEliminar.TabIndex = 27;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -59,9 +59,9 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(337, 81);
+            this.btnModificar.Location = new System.Drawing.Point(256, 96);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 41);
+            this.btnModificar.Size = new System.Drawing.Size(59, 26);
             this.btnModificar.TabIndex = 26;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
@@ -69,12 +69,13 @@
             // 
             // btnHistorial
             // 
-            this.btnHistorial.Location = new System.Drawing.Point(468, 17);
+            this.btnHistorial.Location = new System.Drawing.Point(412, 81);
             this.btnHistorial.Name = "btnHistorial";
             this.btnHistorial.Size = new System.Drawing.Size(75, 41);
             this.btnHistorial.TabIndex = 25;
             this.btnHistorial.Text = "Historial";
             this.btnHistorial.UseVisualStyleBackColor = true;
+            this.btnHistorial.Click += new System.EventHandler(this.btnHistorial_Click);
             // 
             // groupBox2
             // 
@@ -110,6 +111,7 @@
             this.dgvDatos.Name = "dgvDatos";
             this.dgvDatos.Size = new System.Drawing.Size(528, 150);
             this.dgvDatos.TabIndex = 22;
+            this.dgvDatos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDatos_CellClick);
             // 
             // cmbLugar
             // 
@@ -139,9 +141,9 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(256, 81);
+            this.btnAgregar.Location = new System.Drawing.Point(256, 73);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 41);
+            this.btnAgregar.Size = new System.Drawing.Size(59, 26);
             this.btnAgregar.TabIndex = 18;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;

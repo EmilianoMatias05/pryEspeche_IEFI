@@ -17,16 +17,6 @@ namespace pryEspeche_IEFI
             InitializeComponent();
         }
 
-        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvDatos.CurrentRow != null)
-            {
-                cmbTarea.Text = dgvDatos.CurrentRow.Cells["Tarea"].Value.ToString();
-                cmbLugar.Text = dgvDatos.CurrentRow.Cells["Lugar"].Value.ToString();
-                dtpFecha.Value = Convert.ToDateTime(dgvDatos.CurrentRow.Cells["Fecha"].Value);
-            }
-        }
-
         private void frmTareas_Load(object sender, EventArgs e)
         {
             cmbTarea.Items.Add("Auditoría");
@@ -49,6 +39,7 @@ namespace pryEspeche_IEFI
                 cmbLugar.SelectedIndex = 0;
 
             dtpFecha.MaxDate = DateTime.Today;
+            CargarTareas();
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -116,6 +107,22 @@ namespace pryEspeche_IEFI
             {
                 MessageBox.Show("Seleccione una tarea para modificar.");
             }
+        }
+
+        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDatos.CurrentRow != null)
+            {
+                cmbTarea.Text = dgvDatos.CurrentRow.Cells["Tarea"].Value.ToString();
+                cmbLugar.Text = dgvDatos.CurrentRow.Cells["Lugar"].Value.ToString();
+                dtpFecha.Value = Convert.ToDateTime(dgvDatos.CurrentRow.Cells["Fecha"].Value);
+            }
+        }
+
+        private void btnHistorial_Click(object sender, EventArgs e)
+        {
+            frmHistorialTareas historialTareas = new frmHistorialTareas();
+            historialTareas.ShowDialog();
         }
     }
 }
