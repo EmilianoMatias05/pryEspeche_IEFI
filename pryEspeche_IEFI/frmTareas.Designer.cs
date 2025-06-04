@@ -49,25 +49,27 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(427, 84);
+            this.btnEliminar.Location = new System.Drawing.Point(418, 81);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 41);
             this.btnEliminar.TabIndex = 27;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(346, 84);
+            this.btnModificar.Location = new System.Drawing.Point(337, 81);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 41);
             this.btnModificar.TabIndex = 26;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
             // btnHistorial
             // 
-            this.btnHistorial.Location = new System.Drawing.Point(490, 20);
+            this.btnHistorial.Location = new System.Drawing.Point(468, 17);
             this.btnHistorial.Name = "btnHistorial";
             this.btnHistorial.Size = new System.Drawing.Size(75, 41);
             this.btnHistorial.TabIndex = 25;
@@ -77,7 +79,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.richTextBox1);
-            this.groupBox2.Location = new System.Drawing.Point(24, 492);
+            this.groupBox2.Location = new System.Drawing.Point(15, 489);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(528, 134);
             this.groupBox2.TabIndex = 24;
@@ -88,13 +90,13 @@
             // 
             this.richTextBox1.Location = new System.Drawing.Point(6, 19);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(516, 96);
+            this.richTextBox1.Size = new System.Drawing.Size(516, 109);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(24, 331);
+            this.groupBox1.Location = new System.Drawing.Point(15, 328);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(528, 155);
             this.groupBox1.TabIndex = 23;
@@ -104,15 +106,15 @@
             // dgvDatos
             // 
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDatos.Location = new System.Drawing.Point(24, 163);
+            this.dgvDatos.Location = new System.Drawing.Point(15, 160);
             this.dgvDatos.Name = "dgvDatos";
-            this.dgvDatos.Size = new System.Drawing.Size(541, 150);
+            this.dgvDatos.Size = new System.Drawing.Size(528, 150);
             this.dgvDatos.TabIndex = 22;
             // 
             // cmbLugar
             // 
             this.cmbLugar.FormattingEnabled = true;
-            this.cmbLugar.Location = new System.Drawing.Point(140, 123);
+            this.cmbLugar.Location = new System.Drawing.Point(131, 120);
             this.cmbLugar.Name = "cmbLugar";
             this.cmbLugar.Size = new System.Drawing.Size(105, 21);
             this.cmbLugar.TabIndex = 21;
@@ -121,7 +123,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(82, 126);
+            this.label4.Location = new System.Drawing.Point(73, 123);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 13);
             this.label4.TabIndex = 20;
@@ -130,23 +132,24 @@
             // cmbTarea
             // 
             this.cmbTarea.FormattingEnabled = true;
-            this.cmbTarea.Location = new System.Drawing.Point(140, 81);
+            this.cmbTarea.Location = new System.Drawing.Point(131, 78);
             this.cmbTarea.Name = "cmbTarea";
             this.cmbTarea.Size = new System.Drawing.Size(105, 21);
             this.cmbTarea.TabIndex = 19;
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(265, 84);
+            this.btnAgregar.Location = new System.Drawing.Point(256, 81);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 41);
             this.btnAgregar.TabIndex = 18;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // dtpFecha
             // 
-            this.dtpFecha.Location = new System.Drawing.Point(140, 41);
+            this.dtpFecha.Location = new System.Drawing.Point(131, 38);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(200, 20);
             this.dtpFecha.TabIndex = 17;
@@ -155,7 +158,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(82, 84);
+            this.label3.Location = new System.Drawing.Point(73, 81);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
             this.label3.TabIndex = 16;
@@ -165,7 +168,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(82, 41);
+            this.label2.Location = new System.Drawing.Point(73, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 15;
@@ -175,7 +178,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 12);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(132, 13);
             this.label1.TabIndex = 14;
@@ -185,7 +188,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(578, 641);
+            this.ClientSize = new System.Drawing.Size(556, 641);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.btnHistorial);
@@ -202,6 +205,7 @@
             this.Controls.Add(this.label1);
             this.Name = "frmTareas";
             this.Text = "Tareas";
+            this.Load += new System.EventHandler(this.frmTareas_Load);
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);

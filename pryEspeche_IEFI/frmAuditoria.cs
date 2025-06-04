@@ -20,6 +20,7 @@ namespace pryEspeche_IEFI
 
         private void frmAuditoria_Load(object sender, EventArgs e)
         {
+            dtpFecha.MaxDate = DateTime.Today;
             string query = "SELECT Usuario, HoraInicio, HoraFin, TiempoUso, Fecha FROM Auditoria ORDER BY HoraInicio DESC";
 
             DataTable tabla = ConexionBD.EjecutarSelect(query);

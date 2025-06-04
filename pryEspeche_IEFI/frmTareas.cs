@@ -17,6 +17,40 @@ namespace pryEspeche_IEFI
             InitializeComponent();
         }
 
+        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDatos.CurrentRow != null)
+            {
+                cmbTarea.Text = dgvDatos.CurrentRow.Cells["Tarea"].Value.ToString();
+                cmbLugar.Text = dgvDatos.CurrentRow.Cells["Lugar"].Value.ToString();
+                dtpFecha.Value = Convert.ToDateTime(dgvDatos.CurrentRow.Cells["Fecha"].Value);
+            }
+        }
+
+        private void frmTareas_Load(object sender, EventArgs e)
+        {
+            cmbTarea.Items.Add("Auditoría");
+            cmbTarea.Items.Add("Consultas");
+            cmbTarea.Items.Add("Inspección");
+            cmbTarea.Items.Add("Reclamos");
+            cmbTarea.Items.Add("Visita");
+            cmbTarea.Items.Add("Capacitación");
+            cmbTarea.Items.Add("Supervisión");
+            cmbLugar.Items.Add("Empresa");
+            cmbLugar.Items.Add("Servicio");
+            cmbLugar.Items.Add("Oficina");
+            cmbLugar.Items.Add("Depósito");
+            cmbLugar.Items.Add("Terreno");
+
+            if (cmbTarea.Items.Count > 0)
+                cmbTarea.SelectedIndex = 0;
+
+            if (cmbLugar.Items.Count > 0)
+                cmbLugar.SelectedIndex = 0;
+
+            dtpFecha.MaxDate = DateTime.Today;
+        }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             string tarea = cmbTarea.Text;
@@ -82,38 +116,6 @@ namespace pryEspeche_IEFI
             {
                 MessageBox.Show("Seleccione una tarea para modificar.");
             }
-        }
-
-        private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (dgvDatos.CurrentRow != null)
-            {
-                cmbTarea.Text = dgvDatos.CurrentRow.Cells["Tarea"].Value.ToString();
-                cmbLugar.Text = dgvDatos.CurrentRow.Cells["Lugar"].Value.ToString();
-                dtpFecha.Value = Convert.ToDateTime(dgvDatos.CurrentRow.Cells["Fecha"].Value);
-            }
-        }
-
-        private void frmTareas_Load(object sender, EventArgs e)
-        {
-            cmbTarea.Items.Add("Auditoría");
-            cmbTarea.Items.Add("Consultas");
-            cmbTarea.Items.Add("Inspección");
-            cmbTarea.Items.Add("Reclamos");
-            cmbTarea.Items.Add("Visita");
-            cmbTarea.Items.Add("Capacitación");
-            cmbTarea.Items.Add("Supervisión");
-            cmbLugar.Items.Add("Empresa");
-            cmbLugar.Items.Add("Servicio");
-            cmbLugar.Items.Add("Oficina");
-            cmbLugar.Items.Add("Depósito");
-            cmbLugar.Items.Add("Terreno");
-
-            if (cmbTarea.Items.Count > 0)
-                cmbTarea.SelectedIndex = 0;
-
-            if (cmbLugar.Items.Count > 0)
-                cmbLugar.SelectedIndex = 0;
         }
     }
 }

@@ -44,7 +44,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(1, 215);
+            this.btnAgregar.Location = new System.Drawing.Point(12, 214);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(96, 48);
             this.btnAgregar.TabIndex = 0;
@@ -54,7 +54,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(103, 215);
+            this.btnModificar.Location = new System.Drawing.Point(114, 214);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(96, 48);
             this.btnModificar.TabIndex = 1;
@@ -64,7 +64,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(205, 215);
+            this.btnEliminar.Location = new System.Drawing.Point(216, 214);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(96, 48);
             this.btnEliminar.TabIndex = 2;
@@ -75,7 +75,7 @@
             // dgvDatos
             // 
             this.dgvDatos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvDatos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvDatos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells;
             this.dgvDatos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDatos.Dock = System.Windows.Forms.DockStyle.Right;
             this.dgvDatos.Location = new System.Drawing.Point(330, 0);
