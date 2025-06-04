@@ -31,12 +31,14 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tareasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.administracionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tareasToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.gestionToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.auditoriaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.striplabelUser = new System.Windows.Forms.ToolStripStatusLabel();
             this.striplabelFecha = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnCerrarSesion = new System.Windows.Forms.Button();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripSeparator();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -57,21 +59,25 @@
             this.tareasToolStripMenuItem.Name = "tareasToolStripMenuItem";
             this.tareasToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.tareasToolStripMenuItem.Text = "Tareas";
+            this.tareasToolStripMenuItem.Click += new System.EventHandler(this.tareasToolStripMenuItem_Click);
             // 
             // administracionToolStripMenuItem
             // 
             this.administracionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tareasToolStripMenuItem1,
-            this.auditoriaToolStripMenuItem});
+            this.gestionToolStripMenuItem1,
+            this.toolStripMenuItem1,
+            this.auditoriaToolStripMenuItem,
+            this.toolStripMenuItem2});
             this.administracionToolStripMenuItem.Name = "administracionToolStripMenuItem";
             this.administracionToolStripMenuItem.Size = new System.Drawing.Size(100, 20);
             this.administracionToolStripMenuItem.Text = "Administración";
             // 
-            // tareasToolStripMenuItem1
+            // gestionToolStripMenuItem1
             // 
-            this.tareasToolStripMenuItem1.Name = "tareasToolStripMenuItem1";
-            this.tareasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.tareasToolStripMenuItem1.Text = "Usuarios";
+            this.gestionToolStripMenuItem1.Name = "gestionToolStripMenuItem1";
+            this.gestionToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.gestionToolStripMenuItem1.Text = "Usuarios";
+            this.gestionToolStripMenuItem1.Click += new System.EventHandler(this.tareasToolStripMenuItem1_Click);
             // 
             // auditoriaToolStripMenuItem
             // 
@@ -114,6 +120,16 @@
             this.btnCerrarSesion.UseVisualStyleBackColor = true;
             this.btnCerrarSesion.Click += new System.EventHandler(this.btnCerrarSesion_Click);
             // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(177, 6);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -145,7 +161,9 @@
         private System.Windows.Forms.ToolStripStatusLabel striplabelUser;
         private System.Windows.Forms.ToolStripStatusLabel striplabelFecha;
         private System.Windows.Forms.ToolStripMenuItem auditoriaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tareasToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem gestionToolStripMenuItem1;
         private System.Windows.Forms.Button btnCerrarSesion;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem2;
     }
 }

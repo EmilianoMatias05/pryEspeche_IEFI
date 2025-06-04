@@ -37,6 +37,7 @@ namespace pryEspeche_IEFI
             if (nombreUsuario.ToLower() != "admin")
             {
                 auditoriaToolStripMenuItem.Visible = false;
+                gestionToolStripMenuItem1.Visible = false;
             }
         }
 
@@ -89,6 +90,18 @@ namespace pryEspeche_IEFI
         private void btnCerrarSesion_Click(object sender, EventArgs e)
         {
             this.Close(); // dispara el evento FormClosing y se graba auditoría
+        }
+
+        private void tareasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmGestionUsuarios usuarios = new frmGestionUsuarios();
+            usuarios.ShowDialog();
+        }
+
+        private void tareasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmTareas tareas = new frmTareas();
+            tareas.ShowDialog();
         }
     }
 }
