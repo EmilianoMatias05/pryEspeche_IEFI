@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAuditoria));
             this.dgvDatos = new System.Windows.Forms.DataGridView();
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.btnVerTodos = new System.Windows.Forms.Button();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,7 +49,7 @@
             // 
             // dtpFecha
             // 
-            this.dtpFecha.Location = new System.Drawing.Point(18, 27);
+            this.dtpFecha.Location = new System.Drawing.Point(12, 62);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(200, 20);
             this.dtpFecha.TabIndex = 1;
@@ -63,20 +65,33 @@
             this.btnVerTodos.UseVisualStyleBackColor = true;
             this.btnVerTodos.Click += new System.EventHandler(this.btnVerTodos_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 18);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 13);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "AUDITORÍA";
+            // 
             // frmAuditoria
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 361);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnVerTodos);
             this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.dgvDatos);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmAuditoria";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Auditoria";
+            this.Text = "Auditoría";
             this.Load += new System.EventHandler(this.frmAuditoria_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDatos)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -85,5 +100,6 @@
         private System.Windows.Forms.DataGridView dgvDatos;
         private System.Windows.Forms.DateTimePicker dtpFecha;
         private System.Windows.Forms.Button btnVerTodos;
+        private System.Windows.Forms.Label label4;
     }
 }

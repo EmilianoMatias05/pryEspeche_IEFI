@@ -12,55 +12,41 @@ namespace pryEspeche_IEFI
     public class ConexionBD
     {
         private static string cadenaConexion = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=iefiBD.mdb";
+        public static OleDbConnection conexion = new OleDbConnection(cadenaConexion); // Agregada
 
-        public static DataTable EjecutarSelect(string consulta, params object[] parametros)
+        public static DataTable EjecutarSelect(string query, params object[] parametros)
         {
             DataTable tabla = new DataTable();
-
-            using (OleDbConnection conn = new OleDbConnection(cadenaConexion))
-            using (OleDbCommand cmd = new OleDbCommand(consulta, conn))
+            using (OleDbConnection conexion = new OleDbConnection(cadenaConexion))
             {
-                for (int i = 0; i < parametros.Length; i++)
+                using (OleDbCommand comando = new OleDbCommand(query, conexion))
                 {
-                    cmd.Parameters.AddWithValue($"@p{i}", parametros[i]);
-                }
-
-                try
-                {
-                    conn.Open();
-                    OleDbDataAdapter adapter = new OleDbDataAdapter(cmd);
-                    adapter.Fill(tabla);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error en la base de datos: " + ex.Message);
+                    for (int i = 0; i < parametros.Length; i++)
+                    {
+                        comando.Parameters.AddWithValue($"@p{i}", parametros[i]);
+                    }
+                    using (OleDbDataAdapter adaptador = new OleDbDataAdapter(comando))
+                    {
+                        adaptador.Fill(tabla);
+                    }
                 }
             }
-
             return tabla;
         }
-
-        public static void EjecutarNonQuery(string consulta, params object[] parametros)
+        public static void EjecutarNonQuery(string query, params object[] parametros)
         {
-            using (OleDbConnection conn = new OleDbConnection(cadenaConexion))
-            using (OleDbCommand cmd = new OleDbCommand(consulta, conn))
+            using (OleDbConnection conexion = new OleDbConnection(cadenaConexion))
             {
-                for (int i = 0; i < parametros.Length; i++)
+                conexion.Open();
+                using (OleDbCommand comando = new OleDbCommand(query, conexion))
                 {
-                    cmd.Parameters.AddWithValue($"@p{i}", parametros[i]);
-                }
-
-                try
-                {
-                    conn.Open();
-                    cmd.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al ejecutar: " + ex.Message);
+                    for (int i = 0; i < parametros.Length; i++)
+                    {
+                        comando.Parameters.AddWithValue($"@p{i}", parametros[i]);
+                    }
+                    comando.ExecuteNonQuery();
                 }
             }
         }
     }
 }
-

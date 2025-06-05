@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogin));
             this.BtnConectar = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.txtContraseña = new System.Windows.Forms.TextBox();
             this.txtUsuario = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // BtnConectar
@@ -77,16 +79,28 @@
             this.txtUsuario.Size = new System.Drawing.Size(100, 20);
             this.txtUsuario.TabIndex = 5;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(12, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(84, 13);
+            this.label4.TabIndex = 17;
+            this.label4.Text = "Inicio Sesión:";
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 331);
+            this.ClientSize = new System.Drawing.Size(411, 299);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.BtnConectar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblNombre);
             this.Controls.Add(this.txtContraseña);
             this.Controls.Add(this.txtUsuario);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmLogin";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.FrmLogin_Load_1);
@@ -102,5 +116,6 @@
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.TextBox txtContraseña;
         private System.Windows.Forms.TextBox txtUsuario;
+        private System.Windows.Forms.Label label4;
     }
 }
