@@ -168,12 +168,6 @@ namespace pryEspeche_IEFI
             }
         }
 
-        private void btnHistorial_Click(object sender, EventArgs e)
-        {
-            frmHistorialTareas historialTareas = new frmHistorialTareas();
-            historialTareas.ShowDialog();
-        }
-
         private void btnGrabar_Click(object sender, EventArgs e)
         {
             try
