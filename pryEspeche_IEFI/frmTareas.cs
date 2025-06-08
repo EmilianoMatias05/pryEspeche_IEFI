@@ -21,33 +21,7 @@ namespace pryEspeche_IEFI
         private void frmTareas_Load(object sender, EventArgs e)
         {
             dgvDatos.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dgvDatos.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-
-            if (dgvDatos.Columns.Contains("ID"))
-            {
-                dgvDatos.Columns["ID"].Width = 50;
-            }
-            if (dgvDatos.Columns.Contains("Fecha"))
-            {
-                dgvDatos.Columns["Fecha"].Width = 100;
-            }
-            if (dgvDatos.Columns.Contains("Tarea"))
-            {
-                dgvDatos.Columns["Tarea"].Width = 120;
-            }
-            if (dgvDatos.Columns.Contains("Lugar"))
-            {
-                dgvDatos.Columns["Lugar"].Width = 100;
-            }
-
-            if (dgvDatos.Columns.Contains("Detalles"))
-            {
-                dgvDatos.Columns["Detalles"].Width = 300;
-            }
-            if (dgvDatos.Columns.Contains("Comentarios"))
-            {
-                dgvDatos.Columns["Comentarios"].Width = 450;
-            }
+            dgvDatos.DefaultCellStyle.WrapMode = DataGridViewTriState.True;        
 
             cmbTarea.Items.Add("Auditoría");
             cmbTarea.Items.Add("Consultas");
@@ -76,9 +50,19 @@ namespace pryEspeche_IEFI
             string consulta = "SELECT * FROM Tareas ORDER BY Fecha DESC";
             DataTable dt = ConexionBD.EjecutarSelect(consulta);
             dgvDatos.DataSource = dt;
-            // Opcional: ajustar columnas
-            dgvDatos.Columns["Detalles"].HeaderText = "Detalles";
-            dgvDatos.Columns["Detalles"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+            // Asegúrate de que las columnas existan antes de accederlas
+            if (dgvDatos.Columns.Contains("ID")) dgvDatos.Columns["ID"].Width = 50;
+            if (dgvDatos.Columns.Contains("Fecha")) dgvDatos.Columns["Fecha"].Width = 100;
+            if (dgvDatos.Columns.Contains("Tarea")) dgvDatos.Columns["Tarea"].Width = 120;
+            if (dgvDatos.Columns.Contains("Lugar")) dgvDatos.Columns["Lugar"].Width = 100;
+            if (dgvDatos.Columns.Contains("Detalles"))
+            {
+                dgvDatos.Columns["Detalles"].Width = 300;
+                dgvDatos.Columns["Detalles"].HeaderText = "Detalles";
+                dgvDatos.Columns["Detalles"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            }
+            if (dgvDatos.Columns.Contains("Comentarios")) dgvDatos.Columns["Comentarios"].Width = 450;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -127,8 +111,23 @@ namespace pryEspeche_IEFI
                 string tarea = cmbTarea.Text;
                 string lugar = cmbLugar.Text;
                 DateTime fecha = dtpFecha.Value.Date;
-                string consulta = "UPDATE Tareas SET Fecha = ?, Tarea = ?, Lugar = ? WHERE ID = ?";
-                ConexionBD.EjecutarNonQuery(consulta, fecha, tarea, lugar, id);
+
+                // Reconstruir los detalles desde los checkboxes
+                List<string> detalles = new List<string>();
+                if (chkMovilidad.Checked) detalles.Add("Movilidad");
+                if (chkSupervisor.Checked) detalles.Add("Supervisor");
+                if (chkMateriales.Checked) detalles.Add("Materiales");
+                if (chkSeguridad.Checked) detalles.Add("Seguridad");
+                if (chkInforme.Checked) detalles.Add("Informe");
+                if (chkUrgente.Checked) detalles.Add("Urgente"); // Esto también debe estar
+                string detallesTexto = string.Join(", ", detalles);
+
+                string comentarios = txtComentario.Text;
+
+                // Consulta actualizada
+                string consulta = "UPDATE Tareas SET Fecha = ?, Tarea = ?, Lugar = ?, Detalles = ?, Comentarios = ? WHERE ID = ?";
+                ConexionBD.EjecutarNonQuery(consulta, fecha, tarea, lugar, detallesTexto, comentarios, id);
+
                 MessageBox.Show("Tarea modificada correctamente.");
                 CargarTareas();
             }
@@ -150,6 +149,8 @@ namespace pryEspeche_IEFI
                 chkMateriales.Checked = detalles.Contains("Materiales");
                 chkSeguridad.Checked = detalles.Contains("Seguridad");
                 chkInforme.Checked = detalles.Contains("Informe");
+                txtComentario.Text = dgvDatos.CurrentRow.Cells["Comentarios"].Value.ToString();
+
             }
             // Verificamos si la celda "Fecha" de la fila seleccionada NO es DBNull (es decir, tiene un valor válido)
             if (dgvDatos.CurrentRow.Cells["Fecha"].Value != DBNull.Value)

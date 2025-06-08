@@ -141,7 +141,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(151, 13);
             this.label4.TabIndex = 15;
-            this.label4.Text = "GESTION DE USUARIOS";
+            this.label4.Text = "GESTIÓN DE USUARIOS";
             // 
             // frmUsuarios
             // 
