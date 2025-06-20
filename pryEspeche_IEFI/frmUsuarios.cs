@@ -18,23 +18,25 @@ namespace pryEspeche_IEFI
         {
             InitializeComponent();
         }
-        private void MostrarUsuarios()
-        {
-            string consulta = "SELECT * FROM Usuarios";
-            dgvDatos.DataSource = ConexionBD.EjecutarSelect(consulta);
-        }
 
         private void frmUsuarios_Load(object sender, EventArgs e)
         {
             MostrarUsuarios();
         }
 
+        private void MostrarUsuarios()
+        {
+            dgvDatos.DataSource = ConexionBD.EjecutarSelect("SELECT * FROM Usuarios");
+        }
+
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (txtNombre.Text != "" && txtContraseña.Text != "")
             {
+                var nuevoUsuario = new clsUsuario.Usuario(txtNombre.Text, txtContraseña.Text);
                 string consulta = "INSERT INTO Usuarios (Nombre, Contraseña) VALUES (?, ?)";
-                ConexionBD.EjecutarNonQuery(consulta, txtNombre.Text, txtContraseña.Text);
+                ConexionBD.EjecutarNonQuery(consulta, nuevoUsuario.Nombre, nuevoUsuario.Contraseña);
+
                 MessageBox.Show("Usuario agregado correctamente.");
                 MostrarUsuarios();
             }
@@ -48,8 +50,19 @@ namespace pryEspeche_IEFI
         {
             if (txtID.Text != "")
             {
-                string consulta = "UPDATE Usuarios SET Nombre=?, Contraseña=? WHERE ID=?";
-                ConexionBD.EjecutarNonQuery(consulta, txtNombre.Text, txtContraseña.Text, Convert.ToInt32(txtID.Text));
+                var usuarioModificado = new clsUsuario.Usuario(
+                    Convert.ToInt32(txtID.Text),
+                    txtNombre.Text,
+                    txtContraseña.Text
+                );
+
+                string consulta = "UPDATE Usuarios SET Nombre = ?, Contraseña = ? WHERE ID = ?";
+                ConexionBD.EjecutarNonQuery(consulta,
+                    usuarioModificado.Nombre,
+                    usuarioModificado.Contraseña,
+                    usuarioModificado.ID
+                );
+
                 MessageBox.Show("Usuario modificado correctamente.");
                 MostrarUsuarios();
             }
@@ -63,8 +76,10 @@ namespace pryEspeche_IEFI
         {
             if (txtID.Text != "")
             {
-                string consulta = "DELETE FROM Usuarios WHERE ID=?";
-                ConexionBD.EjecutarNonQuery(consulta, Convert.ToInt32(txtID.Text));
+                int id = Convert.ToInt32(txtID.Text);
+                string consulta = "DELETE FROM Usuarios WHERE ID = ?";
+                ConexionBD.EjecutarNonQuery(consulta, id);
+
                 MessageBox.Show("Usuario eliminado correctamente.");
                 MostrarUsuarios();
             }

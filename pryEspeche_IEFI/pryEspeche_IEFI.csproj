@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsTarea.cs" />
+    <Compile Include="clsUsuario.cs" />
     <Compile Include="ConexionBD.cs" />
     <Compile Include="frmAuditoria.cs">
       <SubType>Form</SubType>
