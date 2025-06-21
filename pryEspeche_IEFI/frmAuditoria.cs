@@ -35,9 +35,7 @@ namespace pryEspeche_IEFI
 
         private void dtpFecha_ValueChanged(object sender, EventArgs e)
         {
-            string sql = "SELECT Usuario, HoraInicio, HoraFin, TiempoUso, Fecha " +
-                 "FROM Auditoria WHERE FORMAT(Fecha, 'MM/dd/yyyy') = ? " +
-                 "ORDER BY HoraInicio";
+            string sql = "SELECT Usuario, HoraInicio, HoraFin, TiempoUso, Fecha " +"FROM Auditoria WHERE FORMAT(Fecha, 'MM/dd/yyyy') = ? " +"ORDER BY HoraInicio";
 
             DateTime fechaSeleccionada = dtpFecha.Value.Date;
             string fechaStr = fechaSeleccionada.ToString("MM/dd/yyyy");

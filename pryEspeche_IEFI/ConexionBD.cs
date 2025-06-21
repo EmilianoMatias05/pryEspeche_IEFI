@@ -12,7 +12,7 @@ namespace pryEspeche_IEFI
     public class ConexionBD
     {
         private static string cadenaConexion = "Provider=Microsoft.Jet.OLEDB.4.0;Data Source=iefiBD.mdb";
-        public static OleDbConnection conexion = new OleDbConnection(cadenaConexion); // Agregada
+        public static OleDbConnection conexion = new OleDbConnection(cadenaConexion);
 
         public static DataTable EjecutarSelect(string query, params object[] parametros)
         {
@@ -21,9 +21,9 @@ namespace pryEspeche_IEFI
             {
                 using (OleDbCommand comando = new OleDbCommand(query, conexion))
                 {
-                    for (int i = 0; i < parametros.Length; i++)
+                    foreach (var parametro in parametros)
                     {
-                        comando.Parameters.AddWithValue($"@p{i}", parametros[i]);
+                        comando.Parameters.AddWithValue("?", parametro);
                     }
                     using (OleDbDataAdapter adaptador = new OleDbDataAdapter(comando))
                     {
@@ -33,16 +33,16 @@ namespace pryEspeche_IEFI
             }
             return tabla;
         }
-        public static void EjecutarNonQuery(string query, params object[] parametros)
+        public static void EjecutarQuery(string query, params object[] parametros)
         {
             using (OleDbConnection conexion = new OleDbConnection(cadenaConexion))
             {
                 conexion.Open();
                 using (OleDbCommand comando = new OleDbCommand(query, conexion))
                 {
-                    for (int i = 0; i < parametros.Length; i++)
+                    foreach (var parametro in parametros)
                     {
-                        comando.Parameters.AddWithValue($"@p{i}", parametros[i]);
+                        comando.Parameters.AddWithValue("?", parametro);
                     }
                     comando.ExecuteNonQuery();
                 }

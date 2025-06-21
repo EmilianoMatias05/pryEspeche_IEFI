@@ -35,7 +35,7 @@ namespace pryEspeche_IEFI
             {
                 var nuevoUsuario = new clsUsuario.Usuario(txtNombre.Text, txtContraseña.Text);
                 string consulta = "INSERT INTO Usuarios (Nombre, Contraseña) VALUES (?, ?)";
-                ConexionBD.EjecutarNonQuery(consulta, nuevoUsuario.Nombre, nuevoUsuario.Contraseña);
+                ConexionBD.EjecutarQuery(consulta, nuevoUsuario.Nombre, nuevoUsuario.Contraseña);
 
                 MessageBox.Show("Usuario agregado correctamente.");
                 MostrarUsuarios();
@@ -57,7 +57,7 @@ namespace pryEspeche_IEFI
                 );
 
                 string consulta = "UPDATE Usuarios SET Nombre = ?, Contraseña = ? WHERE ID = ?";
-                ConexionBD.EjecutarNonQuery(consulta,
+                ConexionBD.EjecutarQuery(consulta,
                     usuarioModificado.Nombre,
                     usuarioModificado.Contraseña,
                     usuarioModificado.ID
@@ -78,7 +78,7 @@ namespace pryEspeche_IEFI
             {
                 int id = Convert.ToInt32(txtID.Text);
                 string consulta = "DELETE FROM Usuarios WHERE ID = ?";
-                ConexionBD.EjecutarNonQuery(consulta, id);
+                ConexionBD.EjecutarQuery(consulta, id);
 
                 MessageBox.Show("Usuario eliminado correctamente.");
                 MostrarUsuarios();

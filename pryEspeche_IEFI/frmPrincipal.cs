@@ -67,10 +67,10 @@ namespace pryEspeche_IEFI
                     using (OleDbCommand cmd = new OleDbCommand(insertQuery, conn))
                     {
                         cmd.Parameters.Add("Usuario", OleDbType.VarChar).Value = nombreUsuario;
-                        cmd.Parameters.Add("FechaHoraInicio", OleDbType.Date).Value = horaInicio; // tipo Date
+                        cmd.Parameters.Add("FechaHoraInicio", OleDbType.Date).Value = horaInicio; 
                         cmd.Parameters.Add("FechaHoraFin", OleDbType.Date).Value = horaFin;
                         cmd.Parameters.Add("TiempoUso", OleDbType.VarChar).Value = tiempoStr;
-                        cmd.Parameters.Add("Fecha", OleDbType.Date).Value = horaInicio.Date; // Solo la fecha
+                        cmd.Parameters.Add("Fecha", OleDbType.Date).Value = horaInicio.Date;
                         cmd.ExecuteNonQuery();
                     }
                 }

@@ -91,7 +91,7 @@ namespace pryEspeche_IEFI
 
             var nueva = new clsTarea.Tarea(cmbTarea.Text, dtpFecha.Value, cmbLugar.Text, ObtenerDetalles(), txtComentario.Text);
 
-            ConexionBD.EjecutarNonQuery("INSERT INTO Tareas (Tarea, Fecha, Lugar, Detalles, Comentarios) VALUES (?, ?, ?, ?, ?)",
+            ConexionBD.EjecutarQuery("INSERT INTO Tareas (Tarea, Fecha, Lugar, Detalles, Comentarios) VALUES (?, ?, ?, ?, ?)",
                 nueva.TareaNombre, nueva.Fecha, nueva.Lugar, nueva.Detalles, nueva.Comentarios);
 
             MessageBox.Show("Tarea registrada.");
@@ -110,7 +110,7 @@ namespace pryEspeche_IEFI
             int id = Convert.ToInt32(dgvDatos.CurrentRow.Cells["ID"].Value);
             var t = new clsTarea.Tarea(id, cmbTarea.Text, dtpFecha.Value, cmbLugar.Text, ObtenerDetalles(), txtComentario.Text);
 
-            ConexionBD.EjecutarNonQuery("UPDATE Tareas SET Fecha = ?, Tarea = ?, Lugar = ?, Detalles = ?, Comentarios = ? WHERE ID = ?",
+            ConexionBD.EjecutarQuery("UPDATE Tareas SET Fecha = ?, Tarea = ?, Lugar = ?, Detalles = ?, Comentarios = ? WHERE ID = ?",
                 t.Fecha, t.TareaNombre, t.Lugar, t.Detalles, t.Comentarios, t.ID);
 
             MessageBox.Show("Tarea modificada.");
@@ -129,7 +129,7 @@ namespace pryEspeche_IEFI
 
             if (MessageBox.Show("¿Eliminar esta tarea?", "Confirmar", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                ConexionBD.EjecutarNonQuery("DELETE FROM Tareas WHERE ID = ?", id);
+                ConexionBD.EjecutarQuery("DELETE FROM Tareas WHERE ID = ?", id);
                 MessageBox.Show("Tarea eliminada.");
                 CargarTareas();
             }
@@ -137,7 +137,7 @@ namespace pryEspeche_IEFI
 
         private void dgvDatos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvDatos.CurrentRow == null) return;
+            if (dgvDatos.CurrentRow == null) 
 
             cmbTarea.Text = dgvDatos.CurrentRow.Cells["Tarea"].Value.ToString();
             cmbLugar.Text = dgvDatos.CurrentRow.Cells["Lugar"].Value.ToString();
@@ -154,6 +154,7 @@ namespace pryEspeche_IEFI
             dtpFecha.Value = dgvDatos.CurrentRow.Cells["Fecha"].Value != DBNull.Value
                 ? Convert.ToDateTime(dgvDatos.CurrentRow.Cells["Fecha"].Value)
                 : DateTime.Today;
+            return;
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
